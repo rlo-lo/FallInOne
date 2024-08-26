@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_step3.css"> <!-- CSS 파일 연결 -->
+
+    <title>Resume - Working Condition</title>
+    
+</head>
+
+<style>
+        
+</style>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Resume</h1>
+            <button class="download-btn">PDF</button>
+        </header>
+
+        <section>
+            <h2>4. Please enter the <span class="highlight">working condition</span></h2>
+            
+            <div class="working-type">
+                <span>Working type</span>
+                <button class="type-btn active">Part-time</button>
+                <button class="type-btn">Full-time</button>
+            </div>
+
+            <div class="working-condition">
+                <span>Working condition</span>
+                <div class="days">
+                    <button class="day-btn">Mon</button>
+                    <button class="day-btn">Tue</button>
+                    <button class="day-btn">Wed</button>
+                    <button class="day-btn">Thu</button>
+                    <button class="day-btn">Fri</button>
+                    <button class="day-btn">Sat</button>
+                    <button class="day-btn">Sun</button>
+                </div>
+            </div>
+
+            <div class="experience">
+                <span>My working experience</span>
+                <button class="exp-btn">No experience</button>
+                <button class="exp-btn">I have experience</button>
+            </div>
+        </section>
+
+        <footer>
+            <a href="javascript:history.back()">
+            <button class="nav-btn">Previous</button>
+            </a>
+            <button class="finish-btn"onclick="window.location.href='step4.html'">Finish!</button>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Working Type Buttons
+            const typeButtons = document.querySelectorAll('.type-btn');
+            typeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    typeButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                });
+            });
+
+            // Working Condition Buttons
+            const dayButtons = document.querySelectorAll('.day-btn');
+            dayButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    button.classList.toggle('active');
+                });
+            });
+
+            // Experience Buttons
+            const expButtons = document.querySelectorAll('.exp-btn');
+            expButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    expButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

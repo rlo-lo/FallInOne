@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Personal Details</title>
+    <link rel="stylesheet" href="style_step1.css"> <!-- CSS 파일 연결 -->
+</head>
+
+<style>
+       
+</style>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Resume</h1>
+            <button class="download-btn">PDF</button>
+        </header>
+
+        <section>
+            <h2>1. Please enter the <span class="highlight">personal details</span></h2>
+            
+            <label for="first-name">Name</label>
+
+            <div class="name-inputs">
+                <input type="text" id="first-name" placeholder="First Name">
+                <input type="text" id="last-name" placeholder="Last Name">
+            </div>
+
+            <label for="dob">Date of birth</label>
+            <input type="text" id="dob" placeholder="yyyy/mm/dd">
+
+            <label for="nationality">Nationality</label>
+            <input type="text" id="nationality" placeholder="Write down your nationality">
+
+            <label for="contacts">Contacts</label>
+            <input type="text" id="contacts" placeholder="+CC Write down your phone number">
+
+        </section>
+
+        <footer>
+                
+                <a href="javascript:history.back()">
+                <button class="nav-btn">Previous</button>
+                </a>
+                <button class="next-btn"onclick="window.location.href='step2.html'">Next</button>
+           
+        </footer>
+    </div>
+
+    <script src="script.js"></script> <!-- JavaScript 파일 연결 -->
+</body>
+</html>

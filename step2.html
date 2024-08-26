@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_step2.css"> <!-- CSS 파일 연결 -->
+
+    <title>Resume - Required Documents</title>
+    
+</head>
+
+<style>
+        
+</style>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Resume</h1>
+            <button class="download-btn">PDF</button>
+        </header>
+
+        <section>
+            <h2>2. Please enter the <span class="highlight">required documents</span></h2>
+            
+            <label for="visa-file">Visa Expiration Date</label>
+            <div class="filebox">
+                <input class="upload-name" value="첨부파일" placeholder="첨부파일">
+                <div for="file">+add file</div> 
+                <input type="file" id="file">
+            </div>
+            <!-- <div class="file-input">
+                <input type="file" />
+                <div for="visa-file" class="file-label">Select Visa Expiration File</div> 
+                <input type="file" id="visa-file" multiple>
+                <button class="add-file-btn" onclick="openFilePicker('visa-file')">+ add file</button>
+            </div> -->
+            <div class="file-list">
+                <ul id="visa-file-list"></ul>
+            </div>
+
+            <label for="confirmation-file">Part-time work of foreign student confirmation form</label>
+            <div class="filebox">
+                <input class="upload-name" value="첨부파일" placeholder="첨부파일">
+                <div for="file">+add file</div> 
+                <input type="file" id="file">
+            </div>
+            <!-- <div class="file-input">
+                <input type="file" id="confirmation-file" multiple>
+                <label for="confirmation-file" class="file-label">Select Confirmation Form File</label>
+                <input type="file" id="confirmation-file" multiple>
+                <button class="add-file-btn" onclick="openFilePicker('confirmation-file')">+ add file</button>
+            </div> -->
+            <div class="file-list">
+                <ul id="confirmation-file-list"></ul>
+            </div>
+
+            <label>3. Please enter the <span class="highlight">academic status</span></label>
+            <div class="dropdowns">
+                <select id="academic-major">
+                    <option value="" disabled selected>Academic Major</option>
+                    <option value="cs">Computer Science</option>
+                    <option value="eng">Engineering</option>
+                    <option value="bus">Business</option>
+                </select>
+                <select id="grade">
+                    <option value="" disabled selected>Grade</option>
+                    <option value="freshman">Freshman</option>
+                    <option value="sophomore">Sophomore</option>
+                    <option value="junior">Junior</option>
+                    <option value="senior">Senior</option>
+                </select>
+            </div>
+            <label style="display: block; margin-top: 10px;">
+                <input type="checkbox"> I’m taking a break from school now.
+            </label>
+        </section>
+
+        <footer>
+            <a href="javascript:history.back()">
+                <button class="nav-btn">Previous</button>
+            </a>
+            <button class="next-btn" onclick="window.location.href='step3.html'">Next</button>
+        </footer>
+    </div>
+
+    <script>
+
+        $("#file").on('change',function(){
+        var fileName = $("#file").val();
+        $(".upload-name").val(fileName);
+        });
+
+        function openFilePicker(inputId) {
+            document.getElementById(inputId).click();
+        }
+
+        document.getElementById('visa-file').addEventListener('change', function() {
+            updateFileList('visa-file', 'visa-file-list', 'Select Visa Expiration File');
+        });
+
+        document.getElementById('confirmation-file').addEventListener('change', function() {
+            updateFileList('confirmation-file', 'confirmation-file-list', 'Select Confirmation Form File');
+        });
+
+        function updateFileList(inputId, listId, labelText) {
+            const fileInput = document.getElementById(inputId);
+            const fileList = document.getElementById(listId);
+            const fileLabel = document.querySelector(`label[for="${inputId}"]`);
+
+            fileList.innerHTML = ''; // Clear existing list
+            fileLabel.textContent = labelText; // Reset label text
+
+            if (fileInput.files.length === 0) return; // If no files selected, do nothing
+
+            for (let i = 0; i < fileInput.files.length; i++) {
+                const li = document.createElement('li');
+                li.textContent = fileInput.files[i].name;
+                fileList.appendChild(li);
+                fileLabel.textContent = fileInput.files[i].name; // Update label text with file name
+            }
+        }
+    </script>
+</body>
+</html>

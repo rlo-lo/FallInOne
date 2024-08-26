@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Map Example</title>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/> <!-- Font Awesome -->
+    <link rel="stylesheet" href="style_agton.css"/>
+    
+</head>
+
+<style>
+        
+</style>
+
+<body>
+    <div class="container">
+    <div class="search-container">
+        <input type="text" id="search" class="search-input" placeholder="Search the store you are looking for" />
+        <button class="search-button" onclick="searchLocation()">
+            <i class="fas fa-search"></i> <!-- Search icon -->
+            Search
+        </button> <!-- Search button -->
+    </div>
+
+    <div class="button-container">
+        <button><img src="icon/food.png" alt="food" />Food</button>
+        <button><img src="icon/grocery.png" alt="grocery" />Grocery</button>
+        <button><img src="icon/service.png" alt="service" />Service</button>
+    </div>
+    
+    <div id="map"></div>
+    <div class="full-list" onclick="showFullList()">Full list</div>
+    
+    <!-- Icon box with star and location marker -->
+    <div class="icon-box">
+        <i class="fas fa-star icon"></i> <!-- Star icon -->
+        <div class="divider"></div> <!-- Line -->
+        <i class="fas fa-map-marker-alt icon"></i> <!-- Location marker icon -->
+    </div>
+</div>
+    
+    <script>
+        // Set the map to Inha University back gate coordinates (zoom level 16)
+        var map = L.map('map').setView([37.4553, 126.6762], 16);
+
+        L.tileLayer('https://tiles.osm.kr/hot/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        // Add a marker at Inha University back gate
+        var universityMarkerLatlng = [37.449387, 126.654384];
+        var universityMarker = L.marker(universityMarkerLatlng).addTo(map);
+        universityMarker.bindPopup('Inha University Back Gate');
+
+        var customIcon = L.icon({
+            iconUrl: 'icon/food-icon.png',
+            iconSize: [60, 60]
+        });
+
+        // Add a marker for the store at 인하로 67번길
+        var storeMarkerLatlng = [37.4587, 126.6558]; // 인하로 67번길 위치
+        var storeMarker = L.marker(storeMarkerLatlng, { icon: customIcon }).addTo(map);
+        storeMarker.bindPopup('Store Information');
+
+        storeMarker.on('mouseover', function(e) {
+            storeMarker.bindPopup('<b>Position:</b> Hall serving & Instant cooking<br><b>Industry:</b> Restaurant Industry<br><b>Experience level:</b> No limit - 1 year<br><b>Education/Age level:</b> No limit/over 17 years<br><b>Hire amount:</b> 1 person').openPopup();
+        });
+
+        storeMarker.on('click', function() {
+            // Redirect to store information page when store marker is clicked
+            window.location.href = 'store-info.html'; // Store information page URL
+        });
+
+        // 새로운 마커 좌표 설정
+        var newMarker1Latlng = [37.4560, 126.6540]; // 첫 번째 마커 좌표
+        var newMarker2Latlng = [37.4570, 126.6550]; // 두 번째 마커 좌표
+        var newMarker3Latlng = [37.4580, 126.6560]; // 세 번째 마커 좌표
+
+        // 새로운 마커 생성 및 마우스 오버 이벤트 추가
+        var newMarker1 = L.marker(newMarker1Latlng, { icon: customIcon }).addTo(map);
+        newMarker1.bindPopup('New Marker 1');
+
+        newMarker1.on('mouseover', function(e) {
+            newMarker1.bindPopup('<b>Position:</b> Position 1<br><b>Industry:</b> Industry 1<br><b>Experience level:</b> Experience 1<br><b>Education/Age level:</b> Education 1<br><b>Hire amount:</b> Amount 1').openPopup();
+        });
+
+        var newMarker2 = L.marker(newMarker2Latlng, { icon: customIcon }).addTo(map);
+        newMarker2.bindPopup('New Marker 2');
+
+        newMarker2.on('mouseover', function(e) {
+            newMarker2.bindPopup('<b>Position:</b> Position 2<br><b>Industry:</b> Industry 2<br><b>Experience level:</b> Experience 2<br><b>Education/Age level:</b> Education 2<br><b>Hire amount:</b> Amount 2').openPopup();
+        });
+
+        var newMarker3 = L.marker(newMarker3Latlng, { icon: customIcon }).addTo(map);
+        newMarker3.bindPopup('New Marker 3');
+
+        newMarker3.on('mouseover', function(e) {
+            newMarker3.bindPopup('<b>Position:</b> Position 3<br><b>Industry:</b> Industry 3<br><b>Experience level:</b> Experience 3<br><b>Education/Age level:</b> Education 3<br><b>Hire amount:</b> Amount 3').openPopup();
+        });
+
+        // Move the map to the university marker location
+        map.setView(universityMarkerLatlng, 16);
+
+        function searchLocation() {
+            const query = document.getElementById('search').value;
+            alert(`Searching for: ${query}`);
+            // Additional search functionality can be implemented here
+        }
+
+        function showFullList() {
+            alert('Displaying full list of locations.');
+            // Additional full list functionality can be implemented here
+        }
+    </script>
+</body>
+</html>

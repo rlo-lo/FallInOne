@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_main.css"> <!-- CSS 파일 연결 -->
+</head>
+<!-- http://127.0.0.1:5500/index.html -->
+<style>
+        
+</style>
+
+<body>
+    <!-- 제목 섹션 -->
+<div class="container">
+    <div class="Title">NOW JOB,
+        <br/>FOR YOU
+        <br/>FALL IN ONE
+    </div>
+
+    <!-- 이미지 섹션 -->
+     
+    <img src="icon/main-logo.svg" alt="Sample Image" class="image-container"/>
+    
+    <div class="button-container">
+     <!-- 선 섹션 -->
+    <div  class="line"></div>
+    <!-- 버튼 섹션 -->
+    <button id="makeResumeButton" class="button">View Job map</button>
+    <!-- 로그아웃 박스 섹션 -->
+    <button id="logOutButton" class="log-out-box button">Check resume</button>
+    </div>
+</div>
+   
+
+    <!-- 스크립트 섹션 -->
+    <script>
+        document.getElementById('makeResumeButton').addEventListener('click', function() {
+            window.location.href = 'albamon_agton.html';
+        });
+    </script>
+</body>
+</html>
